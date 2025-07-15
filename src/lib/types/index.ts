@@ -22,6 +22,7 @@ export type AppUser = {
   role?: string;
   first_name?: string;
   last_name?: string;
+  display_name?: string;
 };
 
 export type LoginInput = z.infer<typeof LoginSchema>;

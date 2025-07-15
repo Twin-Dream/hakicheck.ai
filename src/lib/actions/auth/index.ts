@@ -35,6 +35,7 @@ export const signInWithCredentials = async (
     role: supabaseUser.role,
     first_name: metadata.first_name,
     last_name: metadata.last_name,
+    display_name: metadata.display_name,
   };
 
   return {
@@ -44,6 +45,9 @@ export const signInWithCredentials = async (
   };
 };
 
+/*
+ * Handles the process of registering a user
+ * */
 export const signUpWithCredentials = async (
   input: RegisterInput,
 ): Promise<ApiResponse<null>> => {
@@ -53,7 +57,7 @@ export const signUpWithCredentials = async (
     password: input.password,
     options: {
       data: {
-        displa_name: `${input.first_name} ${input.last_name}`,
+        display_name: `${input.first_name} ${input.last_name}`,
         first_name: input.first_name,
         last_name: input.last_name,
       },
@@ -61,6 +65,7 @@ export const signUpWithCredentials = async (
     },
   });
 
+  console.log({ error });
   if (error) {
     return {
       status: "error",
@@ -73,3 +78,7 @@ export const signUpWithCredentials = async (
       "Registeration was successful. Please check your email for further instructions",
   };
 };
+
+/**
+ * Handles the process of requesting password reset
+ * */

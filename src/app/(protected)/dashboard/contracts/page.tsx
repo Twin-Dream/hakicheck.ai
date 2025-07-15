@@ -1,7 +1,7 @@
 import React from "react";
 
-function ContractsPage() {
+const ContractsPage = () => {
   return <div>ContractsPage</div>;
-}
+};
 
 export default ContractsPage;
