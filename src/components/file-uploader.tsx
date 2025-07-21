@@ -7,20 +7,20 @@ import {
   XIcon,
 } from "lucide-react";
 
-import { formatBytes, useFileUpload } from "@/hooks/use-file-upload";
+import {
+  FileMetadata,
+  formatBytes,
+  useFileUpload,
+} from "@/hooks/use-file-upload";
 import { Button } from "@/components/ui/button";
+import { useEffect } from "react";
 
-const initialFiles = [
-  {
-    name: "document.pdf",
-    size: 1528737,
-    type: "application/pdf",
-    url: "https://picsum.photos/1000/800?grayscale&random=1",
-    id: "document.pdf-1744638436563-8u5xuls",
-  },
-];
+const initialFiles: FileMetadata[] = [];
 
-export default function FileUploader() {
+type Props = {
+  onFileChangedAction: (file: File) => void;
+};
+export default function FileUploader({ onFileChangedAction }: Props) {
   const maxSize = 40 * 1024 * 1024; // 40MB default
 
   const [
@@ -40,6 +40,11 @@ export default function FileUploader() {
   });
 
   const file = files[0];
+  useEffect(() => {
+    if (file != undefined) {
+      onFileChangedAction(file.file as File);
+    }
+  }, [file, onFileChangedAction]);
 
   return (
     <div className="flex flex-col gap-2">
