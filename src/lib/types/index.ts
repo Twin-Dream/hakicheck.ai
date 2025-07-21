@@ -5,6 +5,7 @@ import {
   RegisterSchema,
   UpdatePasswordSchema,
 } from "@/lib/validators/auth";
+import { UploadContractSchema } from "../validators/contract";
 
 export type ApiStatus = "success" | "error";
 export interface ApiResponse<T> {
@@ -30,6 +31,8 @@ export type RegisterInput = z.infer<typeof RegisterSchema>;
 export type ForgetPasswordInput = z.infer<typeof ForgotPasswordSchema>;
 export type UpdatePasswordInput = z.infer<typeof UpdatePasswordSchema>;
 
+export type UploadContractInput = z.infer<typeof UploadContractSchema>;
+
 export interface Contract {
   id: string;
   user_id: string;
@@ -43,3 +46,9 @@ export interface Contract {
   error_message?: string;
   status?: string;
 }
+
+export type UploadResult = {
+  id: string;
+  path: string;
+  full_path: string;
+};
