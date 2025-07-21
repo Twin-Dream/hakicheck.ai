@@ -4,6 +4,7 @@ import "./globals.css";
 
 const sen = Sen({
   variable: "--font-sen",
+  subsets: ["latin"],
 });
 
 const siteName = "Hakicheck";

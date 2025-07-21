@@ -30,7 +30,6 @@ import { getInitials } from "@/lib/utils";
 export function NavUser({ user }: { user: AppUser | null }) {
   const { isMobile } = useSidebar();
   const initials = getInitials(user?.display_name);
-  console.log({ user });
 
   return (
     <SidebarMenu>

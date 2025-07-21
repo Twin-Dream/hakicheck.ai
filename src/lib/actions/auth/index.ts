@@ -65,7 +65,6 @@ export const signUpWithCredentials = async (
     },
   });
 
-  console.log({ error });
   if (error) {
     return {
       status: "error",

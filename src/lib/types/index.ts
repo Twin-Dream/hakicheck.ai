@@ -29,3 +29,17 @@ export type LoginInput = z.infer<typeof LoginSchema>;
 export type RegisterInput = z.infer<typeof RegisterSchema>;
 export type ForgetPasswordInput = z.infer<typeof ForgotPasswordSchema>;
 export type UpdatePasswordInput = z.infer<typeof UpdatePasswordSchema>;
+
+export interface Contract {
+  id: string;
+  user_id: string;
+  file_name: string;
+  file_url: string;
+  version: number;
+  metadata?: unknown;
+  updated_at?: string;
+  created_at: string;
+  original_text?: string;
+  error_message?: string;
+  status?: string;
+}
